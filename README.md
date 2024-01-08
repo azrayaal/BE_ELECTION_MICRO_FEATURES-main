@@ -1,7 +1,7 @@
-# Awesome Project Build with TypeORM
+# How To Use Pemilu Backend Using Postman
 
-Steps to run this project:
+How to use authorization
 
-1. Run `npm i` command
-2. Setup database settings inside `data-source.ts` file
-3. Run `npm start` command
+Click tab authorization on postman
+Choose Type "Bearer Token" on the left
+Insert token on the right
