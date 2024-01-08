@@ -16,7 +16,7 @@
 
 ```
 {
-  "fullName": "admGuest",
+  	"fullName": "admGuest",
 	"email": "admGuest@gmail.com",
 	"password": "rahasia",
 	"address": "Namek",
