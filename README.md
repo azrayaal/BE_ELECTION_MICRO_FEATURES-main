@@ -6,6 +6,7 @@
 2. Choose Type "Bearer Token" on the left
 3. Insert token on the right
 
+   
 ## User API
 
 ### Register User
@@ -37,6 +38,7 @@
   "password": "rahasia"   
 }
 ```
+
 
 ## Article API
 
