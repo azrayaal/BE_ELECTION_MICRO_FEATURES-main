@@ -11,7 +11,7 @@
 ### Register User
 
 * URL: http://localhost:4000/api/v1/user/register
-* Method: POST
+* Method: `POST`
 * Request Body:
 
 ```
@@ -28,7 +28,7 @@
 ### Login User
 
 * URL: http://localhost:4000/api/v1/user/login
-* Method: POST
+* Method: `POST`
 * Request Body:
 
 ```
@@ -36,4 +36,30 @@
   "email": "admGuest@gmail.com",
   "password": "rahasia"   
 }
+```
+
+## Article API
+
+### Get All Article
+`No Authorization`
+
+* URL: http://localhost:4000/api/v1/article
+* Method: `GET`
+* Request Body:
+  
+```
+[
+    {
+        "id": 1,
+        "title": "KUCING JEMPOLAN",
+        "date": "2023-07-01T00:00:00.000Z",
+        "author": "admazra"
+    },
+    {
+        "id": 2,
+        "title": "NEW ARTICLE",
+        "date": "2023-07-01T00:00:00.000Z",
+        "author": "admGuest"
+    }
+]
 ```
