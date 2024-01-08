@@ -12,19 +12,10 @@ export default new class CandidateServices {
 
             const partyId = data.partyId;
 
-            // findOne with conditions id taken from partyId
             const party = await this.PartyRepository.findOne({ where: { id: partyId } });
     
-            if (!party) {
-                return {
-                    message: `Party with id ${partyId} not found.`,
-                };
-            }
-
-            // const party = await this.PartyRepository.findOne(data.partyId);
             const newCandidate = this.CandidateRepository.create({ ...data, party });
             const candidate = await this.CandidateRepository.save(newCandidate);
-        
 
             return{
                 message: "Success, new Candidate has been added!",

@@ -10,21 +10,12 @@ export default new class NewsServices {
     async create(data: any) : Promise<object | string> {
         try {
 
-            // const userId = data.userId;
-            
-            // // const user = await this.UserRepository.findOne({ where: { id: userId } })
-            // const user = await this.UserRepository.findOne({ where: { id: userId } })
+            const userId = data.userId;
 
-            // const newArticle = this.ArticleRepository.create({ ...data, user: user});
-            // const response = await this.ArticleRepository.save(newArticle)
-            const response = await this.ArticleRepository.save(data)
+            const user = await this.UserRepository.findOne({ where: { id: userId } })
 
-            // const response = await this.ArticleRepository
-            //     .createQueryBuilder()
-            //     .insert()
-            //     .into(Article)
-            //     .values(data)
-            //     .execute();
+            const newArticle = this.ArticleRepository.create({ ...data, users: user});
+            const response = await this.ArticleRepository.save(newArticle)
 
             return {
                 message: "Success, new Article has been added!",
