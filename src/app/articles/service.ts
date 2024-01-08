@@ -86,23 +86,23 @@ export default new class NewsServices {
         }
     }
 
-    async delete(id: any) : Promise<object | string> {
-        try {
+    // async delete(id: any) : Promise<object | string> {
+    //     try {
 
-            const checkId = await this.ArticleRepository.findOne({where:  { id }})
-            if(!checkId){
-                return `there is no id ${id}`
-            }
+    //         const checkId = await this.ArticleRepository.findOne({where:  { id }})
+    //         if(!checkId){
+    //             return `there is no id ${id}`
+    //         }
 
-            await this.ArticleRepository.delete(checkId)
+    //         await this.ArticleRepository.delete(checkId)
 
-            return{
-                message: `Artcile has been deleted`
-            }
-        } catch (error) {
-            return{
-                message: `Ooops something went error during deleting, please see this ==>> ${error}`
-            }
-        }
-    }
+    //         return{
+    //             message: `Artcile has been deleted`
+    //         }
+    //     } catch (error) {
+    //         return{
+    //             message: `Ooops something went error during deleting, please see this ==>> ${error}`
+    //         }
+    //     }
+    // }
 }

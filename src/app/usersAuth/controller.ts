@@ -39,4 +39,14 @@ export default new class AuthControllers {
         }
     }
 
+    async getUser(req: Request, res: Response){
+        try {
+            const users = await AuthServices.getUsers()
+
+            res.status(200).json(users)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
+
 }

@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinColumn } from "typeorm"
 import { Article } from "./Article"
+import { Voter } from "./Voter"
 
 @Entity()
 export class User {
@@ -25,8 +26,14 @@ export class User {
     @Column()
     password: string
 
-    @ManyToOne(() => Article, article => article.users, { nullable: true })
-    @JoinColumn({ name: "articleId" })
+    // @ManyToOne(() => Article, article => article.users, { nullable: true })
+    // @JoinColumn({ name: "articleId" })
+    // article: Article[];
+
+    @OneToMany(() => Article, article => article.users, { nullable: true })
     article: Article[];
+
+    @OneToMany(() => Voter, voter => voter.user, { nullable: true })
+    vote: Voter;
 
 }

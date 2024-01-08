@@ -92,15 +92,15 @@ export default new class ArticleControllers {
         }
     }
 
-    async delete(req: Request, res: Response){
-        try {
-            const {id} = req.params
+    // async delete(req: Request, res: Response){
+    //     try {
+    //         const {id} = req.params
 
-            const response = await ArticleServices.delete(id)
+    //         const response = await ArticleServices.delete(id)
 
-            res.status(200).json(response)
-        } catch (error) {
-            res.status(500).json({message: error.message})
-        }
-    }
+    //         res.status(200).json(response)
+    //     } catch (error) {
+    //         res.status(500).json({message: error.message})
+    //     }
+    // }
 }

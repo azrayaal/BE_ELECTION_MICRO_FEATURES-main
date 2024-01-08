@@ -73,4 +73,18 @@ export default new class AuthServices{
         }
     }
 
+    async getUsers() :Promise<object | string>{
+        try {
+
+            const data = await this.AuthRepository.createQueryBuilder('users').getMany()
+
+            return data
+            
+        } catch (error) {
+            return{
+                message: `Ooops something went wrong, please see this ==>> ${error}`
+            }
+        }
+    }
+
 }

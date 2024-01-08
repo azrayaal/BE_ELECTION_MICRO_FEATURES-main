@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne} from "typeorm"
 import { User } from "./User"
 
 @Entity()
@@ -22,7 +22,11 @@ export class Article {
     @Column()
     description: string
 
-    @OneToMany(() => User, user => user.article)
+    // @OneToMany(() => User, user => user.article)
+    // users: User[];
+
+    @ManyToOne(() => User, user => user.article, { nullable: true })
+    @JoinColumn({ name: "userId" })
     users: User[];
 
 }
