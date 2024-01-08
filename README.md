@@ -175,3 +175,105 @@
   "address": "KERAJAAN SIHIR"
 }
 ```
+
+## Candidate(paslon) API
+
+### Get all candidate
+`No Authorization`
+
+* URL: http://localhost:4000/api/v1/candidate
+* Method: `GET`
+* Request Body:
+
+```
+    {
+        "candidate_id": 1,
+        "candidate_name": "Mimiko Hasaba",
+        "candidate_image": "FIFA LOGO-1704700723367.png",
+        "candidate_vision_mission": "MENGHENTIKAN INVASI NEGARA API",
+        "partyid": 1,
+        "partyname": "GETO UHUY"
+    },
+    {
+        "candidate_id": 2,
+        "candidate_name": "IPPO",
+        "candidate_image": "FIFA LOGO-1704702416331.png",
+        "candidate_vision_mission": "MENINJU SEMUA ORG YG ADA",
+        "partyid": 2,
+        "partyname": "KAMOGAWA GYM"
+    }
+]
+```
+
+### Create new candidate
+`Authorization`
+
+* URL: http://localhost:4000/api/v1/candidate
+* Method: `POST`
+* Request Body:
+
+```
+   {
+        "name": "IPPO",
+        "image": "FIFA LOGO-1704702416331.png",
+        "number": 3,
+        "vision_mission": "MENINJU SEMUA ORG YG ADA",
+        "partyid": 2
+    }
+```
+`Make sure to send the partyId using the id from the party to associate the candidate with the correct party`
+
+## Voter API
+
+### Get all voters
+`Authorization`
+
+* URL: http://localhost:4000/api/v1/voters
+* Method: `GET`
+* Request Body:
+
+```
+[
+    {
+        "userid": 1,
+        "voter_name": "admazra",
+        "voter_address": "gang masjid",
+        "voter_gender": "male",
+        "candidateid": 1,
+        "candidatename": "Mimiko Hasaba"
+    },
+    {
+        "userid": 2,
+        "voter_name": "admGuest",
+        "voter_address": "namek",
+        "voter_gender": "male",
+        "candidateid": 2,
+        "candidatename": "IPPO"
+    }
+]
+```
+
+### Create new voter
+`Authorization`
+
+* URL: http://localhost:4000/api/v1/voter
+* Method: `POST`
+* Request Body:
+
+```
+[
+    {
+        "candidateId": 1,
+        "voter_name": "admazra",
+        "voter_address": "gang masjid",
+        "voter_gender": "male",
+        "candidateid": 1,
+        "candidatename": "Mimiko Hasaba"
+    }
+]
+```
+`The voter data, including voter name, voter address, etc., is retrieved from the user data obtained through user login authorization`
+
+
+
+
