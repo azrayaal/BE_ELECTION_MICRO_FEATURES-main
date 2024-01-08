@@ -8,7 +8,7 @@
 
 ## User API
 
-### * Register User
+### Register User
 
 * URL: http://localhost:4000/api/v1/user/register
 * Method: `POST`
@@ -25,7 +25,7 @@
 }
 ```
 
-### - Login User
+### Login User
 
 * URL: http://localhost:4000/api/v1/user/login
 * Method: `POST`
@@ -80,3 +80,96 @@
 }
 ```
 `Author and userId obtained from isLogin trough Authorization` 
+
+## Party (partai) API
+
+### Get all parties
+`No Authorization`
+
+* URL: http://localhost:4000/api/v1/parties
+* Method: `GET`
+* Request Body:
+
+```
+[
+    {
+        "id": 1,
+        "name": "GETO UHUY",
+        "image": "17011.png",
+        "chairman": "Suguru Geto",
+        "vision_mission": "In publishing and graphic design",
+        "address": "Jalan Veteran, Jakarta Pusat. Map: Klik Disini. HTM: Free. Buka Tutup: 09.00 – 16.00 WIB",
+        "candidates": [
+            {
+                "id": 1,
+                "name": "Mimiko Hasaba",
+                "image": "LOGO-1704700723367.png",
+                "number": 1,
+                "vision_mission": "MENGHENTIKAN INVASI NEGARA API"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "KAMOGAWA GYM",
+        "image": "17011.png",
+        "chairman": "Genji Kamogawa",
+        "vision_mission": "In publishing and graphic design",
+        "address": "Jalan Veteran, Jakarta Pusat. Map: Klik Disini. HTM: Free. Buka Tutup: 09.00 – 16.00 WIB",
+        "candidates": [
+            {
+                "id": 2,
+                "name": "IPPO",
+                "image": "LOGO-1704702416331.png",
+                "number": 2,
+                "vision_mission": "MENINJU SEMUA ORG YG ADA"
+            }
+        ]
+    }
+]
+```
+`Candidate data will be shown after the admin creates a candidate(paslon)`
+
+### Get detail party
+`No Authorization`
+
+* URL: http://localhost:4000/api/v1/party/:id
+* Method: `GET`
+* Request Body:
+
+```
+{
+    "id": 1,
+    "name": "GETO UHUY",
+    "image": "412520687_829427478869516_382939006133828220_n-1704695129411.png",
+    "chairman": "Suguru Geto",
+    "vision_mission": "In publishing and graphic design",
+    "address": "Jalan Veteran, Jakarta Pusat",
+    "candidates": [
+        {
+            "id": 1,
+            "name": "Mimiko Hasaba",
+            "image": "LOGO-1704700723367.png",
+            "number": 1,
+            "vision_mission": "MENGHENTIKAN INVASI NEGARA API"
+        }
+    ]
+}
+```
+
+### Create new party
+`Authorization`
+
+* URL: http://localhost:4000/api/v1/party
+* Method: `POST`
+* Request Body:
+
+```
+{
+  "name": "ASTA",
+  "image": "1704718751443.png",
+  "number": 3,
+  "vision_mission": "MENGHANCURKAN NEGARA TANAH",
+  "address": "KERAJAAN SIHIR"
+}
+```
