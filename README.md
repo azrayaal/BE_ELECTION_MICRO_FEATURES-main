@@ -24,3 +24,16 @@
   "userName": "admGuest"
 }
 ```
+
+### Login User
+
+* URL: http://localhost:4000/api/v1/user/login
+* Method: POST
+* Request Body:
+
+```
+{
+  "email": "admGuest@gmail.com",
+  "password": "rahasia"   
+}
+```
