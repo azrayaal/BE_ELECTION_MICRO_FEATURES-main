@@ -13,3 +13,14 @@
 * URL: http://localhost:5000/api/v1/register
 * Method: POST
 * Request Body:
+
+```
+{
+  "fullName": "admGuest",
+	"email": "admGuest@gmail.com",
+	"password": "rahasia",
+	"address": "Namek",
+	"gender": "male",
+	"userName": "admGuest"
+}
+```
