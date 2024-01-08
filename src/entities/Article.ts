@@ -22,9 +22,6 @@ export class Article {
     @Column()
     description: string
 
-    // @OneToMany(() => User, user => user.article)
-    // users: User[];
-
     @ManyToOne(() => User, user => user.article, { nullable: true })
     @JoinColumn({ name: "userId" })
     users: User[];

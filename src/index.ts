@@ -11,13 +11,14 @@ AppDataSource.initialize().then(async () => {
     const app = express()
     
     app.use(express.json())
-    app.use(cors())
+    const corsOptions = {
+        origin: '*',
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        preflightContinue: false,
+        optionsSuccessStatus: 204
+      }
 
-    // const corsOptions = {
-    //     origin: 'http://example.com',
-    //     optionsSuccessStatus: 200 
-    //   }
-    
+    app.use(cors(corsOptions))
 
     // router
     app.use('/api/v1',  ArticleRouter)

@@ -7,8 +7,6 @@ export default new class CandidateControllers {
     
     async create(req: Request, res: Response){
         try {
-
-
             const data = {
                 name: req.body.name,
                 image: res.locals.filename, 
@@ -16,15 +14,15 @@ export default new class CandidateControllers {
                 vision_mission: req.body.vision_mission,
                 partyId: req.body.partyId
             };
+            // console.log("data candidates", data)
 
             const {error, value} = CandidateScheme.validate(data)
             if(error){
                 res.status(400).json(error.details[0].message)
             }
-
             cloudinary.upload()
             await cloudinary.destination(value.image)
-            console.log('Request Payload:', value);
+            // console.log('Request Payload:', value);
 
             const response = await CandidateServices.create(value)
             

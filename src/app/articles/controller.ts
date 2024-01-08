@@ -16,6 +16,7 @@ export default new class ArticleControllers {
                 date: req.body.date,
                 author: decodedData.fullName,
                 description: req.body.description,
+                // userId: req.body.userId
                 userId: decodedData.id
             };
 
