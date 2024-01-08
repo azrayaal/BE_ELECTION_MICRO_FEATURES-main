@@ -63,3 +63,20 @@
     }
 ]
 ```
+
+### Create new article
+`Authorization`
+
+* URL: http://localhost:4000/api/v1/article
+* Method: `POST`
+* Request Body:
+
+```
+{
+  "title": "admGuest@gmail.com",
+  "image": "rahasia",
+  "date": 2023-07-01,
+  "description": "Lorem ipsum dolor amet wak waw" 
+}
+```
+`Author and userId obtained from isLogin trough Authorization` 
