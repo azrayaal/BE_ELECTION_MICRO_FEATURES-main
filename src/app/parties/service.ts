@@ -33,14 +33,17 @@ export default new class PartyServices {
         }
     }
 
-    // async findById(id: any) : Promise<object | string> {
-    //     try {
-    //         const detail = await this.PartyRepository.findOne({ where: { id } })
-    //         return detail
-    //     } catch (error) {
-    //         return{
-    //             message: `Oops something went wrong, please see this ==>> ${error}`
-    //         }
-    //     }
-    // }
+    async getAll(): Promise<object | string>{
+        try {
+            const party = await this.PartyRepository.createQueryBuilder('party')
+            // .leftJoinAndSelect('party.candidate', 'candidate')
+            .getRawMany()
+
+            return party
+        } catch (error) {
+            return{
+                message: `Ooops something went error, please see this ==>> ${error}`
+            }
+        }
+    }
 }

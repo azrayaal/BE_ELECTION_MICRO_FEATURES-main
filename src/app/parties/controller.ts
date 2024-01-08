@@ -8,6 +8,8 @@ export default new class PartyControllers {
     async create(req: Request, res: Response) {
         try {
 
+          
+
             const data = {
                 name: req.body.name,
                 image: res.locals.filename, 
@@ -40,6 +42,16 @@ export default new class PartyControllers {
             res.status(200).json(response)
         } catch (error) {
             res.status(500).json(error)
+        }
+    }
+
+    async getAll(req: Request, res: Response) {
+        try {
+            const response = await PartyServices.getAll()
+
+            res.status(200).json(response)
+        } catch (error) {
+            res.status(500).json({message: error.message})
         }
     }
 

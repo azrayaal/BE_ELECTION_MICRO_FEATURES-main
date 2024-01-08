@@ -9,7 +9,7 @@ export default new class AuthControllers {
         try {
             const data = req.body
 
-            console.log(data)
+            // console.log(data)
 
             const {error, value} = UserScheme.validate(data)
             if(error){
@@ -25,6 +25,7 @@ export default new class AuthControllers {
 
     async logIn(req: Request, res: Response){
         try {
+
             const data = req.body
 
             const {error, value} = LoginScheme.validate(data)
@@ -33,6 +34,7 @@ export default new class AuthControllers {
             }
 
             const response = await AuthServices.login(value)
+
             res.status(200).json(response)
         } catch (error) {
             res.status(500).json({message: error.message})
@@ -41,7 +43,8 @@ export default new class AuthControllers {
 
     async getUser(req: Request, res: Response){
         try {
-            const users = await AuthServices.getUsers()
+
+            const users = await AuthServices.find()
 
             res.status(200).json(users)
         } catch (error) {

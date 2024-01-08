@@ -7,12 +7,20 @@ import VoterRouter from './app/voters/router'
 import UserAuthRouter from './app/usersAuth/router'
 
 AppDataSource.initialize().then(async () => {
+    const cors = require('cors')
     const app = express()
     
     app.use(express.json())
+    app.use(cors())
+
+    // const corsOptions = {
+    //     origin: 'http://example.com',
+    //     optionsSuccessStatus: 200 
+    //   }
+    
 
     // router
-    app.use('/api/v1', ArticleRouter)
+    app.use('/api/v1',  ArticleRouter)
     app.use('/api/v1', PartyRouter)
     app.use('/api/v1', CandidateRouter)
     app.use('/api/v1', VoterRouter)

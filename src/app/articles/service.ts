@@ -1,18 +1,31 @@
 import { Repository } from "typeorm";
 import { Article } from "../../entities/Article";
+import { User } from "../../entities/User";
 import { AppDataSource } from "../../data-source";
 
 export default new class NewsServices {
     private readonly ArticleRepository: Repository<Article> = AppDataSource.getRepository(Article)
+    private readonly UserRepository: Repository<User> = AppDataSource.getRepository(User)
 
     async create(data: any) : Promise<object | string> {
         try {
-            // console.log('Data received in create:', data);
+
+            const userId = data.userId;
             
-            const response = await this.ArticleRepository.save(data)
+            const user = await this.UserRepository.findOne({ where: { id: userId } })
+
+            if (!user) {
+                return {
+                    message: `User with id ${userId} not found.`,
+                };
+            }
+
+            const newArticle = this.ArticleRepository.create({ ...data, user});
+            const response = await this.ArticleRepository.save(newArticle)
+
             return {
-                message: "Success, news has been added!",
-                data: response
+                message: "Success, new Article has been added!",
+                data: response,
             }
         } catch (error) {
             return{

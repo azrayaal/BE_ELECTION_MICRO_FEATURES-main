@@ -15,6 +15,9 @@ export default new class AuthMiddleware {
             const loginSession = jwt.verify(token, "secretkey")
             res.locals.loginSession = loginSession
 
+            const decoded = jwt.decode(token, { json: true }) as { [key: string]: any };
+            res.locals.decodedData = decoded.obj;
+
             next()
         } catch (error) {
             return res.status(401).json({message: `token not valid`})

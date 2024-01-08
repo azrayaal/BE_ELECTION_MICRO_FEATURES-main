@@ -24,7 +24,7 @@ export const ArticleSchema = Joi.object({
         .max(1000)
         .required(),
 
-        id: Joi.number()
+    userId: Joi.number()
         .required(),
 
 })

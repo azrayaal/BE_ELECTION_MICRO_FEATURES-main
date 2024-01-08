@@ -73,7 +73,7 @@ export default new class AuthServices{
         }
     }
 
-    async getUsers() :Promise<object | string>{
+    async find() :Promise<object | string>{
         try {
 
             const data = await this.AuthRepository.createQueryBuilder('users').getMany()
@@ -86,5 +86,7 @@ export default new class AuthServices{
             }
         }
     }
+
+    
 
 }
