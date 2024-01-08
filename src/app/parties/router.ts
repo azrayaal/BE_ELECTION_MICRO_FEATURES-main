@@ -8,5 +8,6 @@ const router = express.Router()
 router.post('/party', AuthMiddleware.Auth, uploadFile.upload("image"), PartyControllers.create)
 router.get('/party', PartyControllers.find)
 router.get('/parties', PartyControllers.getAll)
+router.get('/party/:id', PartyControllers.getDetail)
 
 export default router

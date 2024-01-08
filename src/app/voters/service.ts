@@ -39,8 +39,8 @@ export default new class VoterServices{
             .leftJoinAndSelect('voter.candidate', 'candidate')
             .leftJoinAndSelect('voter.user', 'user')
             .select([
-            'candidate.id as candidateId', 'candidate.name as candidateName', 
-            'user.id as userId', 'user.fullName as voter', 'user.address as voter_address', 'user.gender as voter_gender'
+            'user.id as userId', 'user.fullName as voter_name', 'user.address as voter_address', 'user.gender as voter_gender',
+            'candidate.id as candidateId', 'candidate.name as candidateName'
             ])
             .getRawMany()
 

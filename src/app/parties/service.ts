@@ -35,13 +35,35 @@ export default new class PartyServices {
 
     async getAll(): Promise<object | string>{
         try {
-            const party = await this.PartyRepository.createQueryBuilder('party')
+
+            const party = await this.PartyRepository.createQueryBuilder("party")
+            .leftJoinAndSelect("party.candidates", "candidates")
+            .getMany();
+
+            // const party = await this.PartyRepository.createQueryBuilder('party')
             // .leftJoinAndSelect('party.candidate', 'candidate')
-            .getRawMany()
+            // .getRawMany()
 
             return party
         } catch (error) {
             return{
+                message: `Ooops something went error, please see this ==>> ${error}`
+            }
+        }
+    }
+
+    async getDetail(id: any): Promise<object | string>{
+        try {
+
+            const detail = await this.PartyRepository.createQueryBuilder("party")
+            .leftJoinAndSelect("party.candidates", "candidates")
+            .where("party.id = :id", { id: id })
+            .getOne();
+
+            return detail
+            
+        } catch (error) {
+            return {
                 message: `Ooops something went error, please see this ==>> ${error}`
             }
         }

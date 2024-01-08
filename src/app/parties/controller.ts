@@ -55,4 +55,16 @@ export default new class PartyControllers {
         }
     }
 
+    async getDetail(req: Request, res: Response){
+        try {
+            const id = req.params.id
+
+            const detail = await PartyServices.getDetail(id)
+
+            res.status(200).json(detail)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
+
 }

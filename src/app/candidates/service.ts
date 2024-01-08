@@ -32,7 +32,8 @@ export default new class CandidateServices {
         try {
             const candidate = await this.CandidateRepository.createQueryBuilder('candidate')
             .leftJoinAndSelect('candidate.party', 'party')
-            .select(['candidate.id', 'candidate.name', 'party.id as partyId', 'party.name as partyName'])
+            .select(['candidate.id', 'candidate.name', 'candidate.image', 'candidate.vision_mission',
+            'party.id as partyId', 'party.name as partyName'])
             .getRawMany()
 
             return candidate

@@ -73,10 +73,13 @@ export default new class AuthServices{
         }
     }
 
-    async find() :Promise<object | string>{
+    async getAll() :Promise<object | string>{
         try {
 
-            const data = await this.AuthRepository.createQueryBuilder('users').getMany()
+            const data = await this.AuthRepository.createQueryBuilder('user')
+            .leftJoinAndSelect("user.article", "article")
+            .leftJoinAndSelect("user.vote", "vote")
+            .getMany()
 
             return data
             
