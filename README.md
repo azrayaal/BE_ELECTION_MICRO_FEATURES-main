@@ -10,17 +10,17 @@
 
 ### Register User
 
-* URL: http://localhost:5000/api/v1/register
+* URL: http://localhost:4000/api/v1/user/register
 * Method: POST
 * Request Body:
 
 ```
 {
-  	"fullName": "admGuest",
-	"email": "admGuest@gmail.com",
-	"password": "rahasia",
-	"address": "Namek",
-	"gender": "male",
-	"userName": "admGuest"
+  "fullName": "admGuest",
+  "email": "admGuest@gmail.com",
+  "password": "rahasia",
+  "address": "Namek",
+  "gender": "male",
+  "userName": "admGuest"
 }
 ```
