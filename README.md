@@ -8,7 +8,7 @@
 
 ## User API
 
-### - Register User
+### * Register User
 
 * URL: http://localhost:4000/api/v1/user/register
 * Method: `POST`
