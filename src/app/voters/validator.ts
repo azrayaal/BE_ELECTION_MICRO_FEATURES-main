@@ -1,15 +1,9 @@
 const Joi = require('joi')
 
 const VoterSchema = Joi.object({
-    name: Joi.string()
-        .min(3)
-        .max(15)
-        .required(),
+    candidateId: Joi.number(),
 
-    vote: Joi.string()
-        .min(3)
-        .max(15)
-        .required(),
+    userId: Joi.number()
 
 })
 export default VoterSchema

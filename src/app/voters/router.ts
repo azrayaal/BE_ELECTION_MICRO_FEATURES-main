@@ -5,6 +5,6 @@ import AuthMiddleware from '../../middlewares/auth'
 const router = express.Router()
 
 router.post('/voter', AuthMiddleware.Auth, VoterControllers.create)
-router.get('/voters', VoterControllers.getAll)
+router.get('/voters', AuthMiddleware.Auth, VoterControllers.getAll)
 
 export default router

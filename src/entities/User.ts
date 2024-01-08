@@ -26,10 +26,6 @@ export class User {
     @Column()
     password: string
 
-    // @ManyToOne(() => Article, article => article.users, { nullable: true })
-    // @JoinColumn({ name: "articleId" })
-    // article: Article[];
-
     @OneToMany(() => Article, article => article.users, { nullable: true })
     article: Article[];
 

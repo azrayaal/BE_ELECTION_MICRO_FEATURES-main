@@ -6,7 +6,13 @@ export default new class VoterControllers {
 
     async create(req: Request, res: Response){
         try {
-            const data = req.body
+
+            const decodedData = res.locals.decodedData;
+
+            const data = {
+                candidateId: req.body.candidateId,
+                userId: decodedData.id
+            }
 
             const {error, value} = VoterSchema.validate(data)
 
