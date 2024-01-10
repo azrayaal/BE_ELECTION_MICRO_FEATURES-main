@@ -273,7 +273,7 @@
 ]
 ```
 `The voter data, including voter name, voter address, etc., is retrieved from the user data obtained through user login authorization`
-a
+
 
 
 
