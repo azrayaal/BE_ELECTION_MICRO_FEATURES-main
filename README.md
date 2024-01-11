@@ -5,7 +5,7 @@
 1. Click tab authorization on postman
 2. Choose Type "Bearer Token" on the left
 3. Insert token on the right
-as
+
    
 ## User API
 
