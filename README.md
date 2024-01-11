@@ -6,7 +6,7 @@
 2. Choose Type "Bearer Token" on the left
 3. Insert token on the right
 
-   sadfdsa
+   
 ## User API
 
 ### Register User
