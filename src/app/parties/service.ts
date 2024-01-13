@@ -55,6 +55,13 @@ export default new class PartyServices {
     async getDetail(id: any): Promise<object | string>{
         try {
 
+            const checkId = await this.PartyRepository.findOne({where: {id}})
+            if(!checkId){
+                return{
+                    message: `Part with id: ${id} doesn't exist`
+                }
+            }
+
             const detail = await this.PartyRepository.createQueryBuilder("party")
             .leftJoinAndSelect("party.candidates", "candidates")
             .where("party.id = :id", { id: id })
