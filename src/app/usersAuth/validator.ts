@@ -24,6 +24,26 @@ password: Joi.string()
 
 })
 
+export const UpdateUserScheme = Joi.object({
+
+    id: Joi.number().required(),
+
+    fullName: Joi.string()
+    .min(3)
+    .max(15)
+    .required(),
+
+address: Joi.string()
+    .required(),
+
+gender: Joi.string()
+    .required(),
+
+password: Joi.string()
+    .required(),
+
+})
+
 export const LoginScheme = Joi.object({
 
     email: Joi.string()

@@ -90,6 +90,39 @@ export default new class AuthServices{
         }
     }
 
+    async update(data: any): Promise<object | string>{
+        try {
+            const {id, fullName, password, address, gender} = data
+            const checkId = await this.AuthRepository.findOne({where: {id}})
+            if(!checkId){
+                return{
+                    message: `User with id: ${id} doesn't exist`
+                }
+            }
+
+            const hashPasword = await bcrypt.hash(password, 10)
+
+            const existingUser = await this.AuthRepository.findOne({where: {id}})
+
+            existingUser.fullName = fullName
+            existingUser.password = hashPasword
+            existingUser.address = address
+            existingUser.gender = gender
+
+            const updateUser = await this.AuthRepository.save(existingUser)
+
+            return{
+                message: `User has been updated`,
+                data: updateUser
+            }
+
+        } catch (error) {
+            return{
+                message: `Ooops something went error, please see this ==>> ${error}`
+            }
+        }
+    }
+
     
 
 }
