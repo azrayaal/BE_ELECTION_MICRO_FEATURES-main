@@ -47,6 +47,14 @@ export default new class CandidateServices {
     async getDetail(id: any): Promise<object | string>{
         try {
 
+            const checkId = await this.CandidateRepository.findOne({where: {id}})
+
+            if (!checkId){
+                return{
+                    message: `Candidate with id: ${id} doesn't exist`
+                }
+            }
+
             const candidateDetail = await this.CandidateRepository.createQueryBuilder('candidate')
             .leftJoinAndSelect('candidate.party', 'party')
             .select(['candidate.id', 'candidate.name', 'candidate.image', 'candidate.vision_mission',
