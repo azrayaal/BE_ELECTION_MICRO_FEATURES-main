@@ -62,4 +62,38 @@ export default new class CandidateServices {
             }
         }
     }
+
+    async updateData(data: any): Promise<object | string>{
+        try {
+
+            const {id, name, image, number, vision_mission, partyId} = data
+
+            const existingCandidate = await this.CandidateRepository.findOne({where: {id}})
+
+            if (!existingCandidate){
+                return{
+                    message: `Candidate with id: ${id}, doesn't exist`
+                }
+            }
+
+            existingCandidate.name = name
+            existingCandidate.image = image
+            existingCandidate.number = number
+            existingCandidate.vision_mission = vision_mission
+            existingCandidate.party = partyId
+
+            const updateCandidate = await this.CandidateRepository.save(existingCandidate)
+
+            return {
+                message: 'Candidate updated successfully.',
+                data: updateCandidate
+              };
+        } catch (error) {
+            return{
+                message: `Ooops something went error, please see this ==> ${error}`
+            }
+        }
+    }
+
+    // async deleteData(id: any): Promise<object
 }
