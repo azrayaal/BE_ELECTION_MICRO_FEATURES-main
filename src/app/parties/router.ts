@@ -9,5 +9,6 @@ router.post('/party', AuthMiddleware.Auth, uploadFile.upload("image"), PartyCont
 router.get('/party', PartyControllers.find)
 router.get('/parties', PartyControllers.getAll)
 router.get('/party/:id', PartyControllers.getDetail)
+router.put('/party/:id', AuthMiddleware.Auth, uploadFile.upload("image"), PartyControllers.update)
 
 export default router

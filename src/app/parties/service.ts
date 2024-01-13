@@ -68,4 +68,35 @@ export default new class PartyServices {
             }
         }
     }
+
+    async update(data: any): Promise<object | string>{
+        try {
+            const {id, name, image, chairman, vision_mission, address} = data
+
+            const existingParty = await this.PartyRepository.findOne({where: {id}})
+            if(!existingParty){
+                return{
+                    message: `Party with id ${id} doesn't exist`
+                }
+            }
+            
+            existingParty.name = name
+            existingParty.image = image
+            existingParty.chairman = chairman
+            existingParty.vision_mission = vision_mission
+            existingParty.address = address
+
+            const updateParty = await this.PartyRepository.save(existingParty)
+
+            return{
+                message: `Party has been updated`,
+                data: updateParty
+            }
+
+        } catch (error) { 
+            return{
+                message: `Ooops something went error, please see this ==>> ${error}`
+            }
+        }
+    }
 }
