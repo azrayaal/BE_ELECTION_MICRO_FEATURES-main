@@ -10,6 +10,6 @@ router.post('/article',  AuthMiddleware.Auth, uploadFile.upload("image"), Articl
 router.get('/article',  ArticleControllers.find)
 router.get('/article/:id', ArticleControllers.getDetail)
 router.put('/article/:id', AuthMiddleware.Auth, uploadFile.upload("image"), ArticleControllers.update)
-// router.delete('/article/:id', AuthMiddleware.Auth, ArticleControllers.delete)
+router.delete('/article/:id', AuthMiddleware.Auth, ArticleControllers.delete)
 
 export default router

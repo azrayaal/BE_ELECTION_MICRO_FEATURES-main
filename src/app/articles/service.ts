@@ -31,7 +31,9 @@ export default new class NewsServices {
     async find() : Promise<object | string> {
         try {
            const article = await this.ArticleRepository.createQueryBuilder('article')
-           .select(['article.id', 'article.title', 'article.date', 'article.author'])
+           .leftJoinAndSelect('article.users', 'user')
+           .select(['article.id', 'article.title', 'article.date', 'article.author', 
+           'article.description', 'user.id'])
            .getMany();
 
            return article
@@ -71,14 +73,8 @@ export default new class NewsServices {
                 existingArticle.date = date;
                 existingArticle.author = author;
                 existingArticle.description = description;
-
-            //   const obj = this.ArticleRepository.create({
-            //     title: existingArticle.title,
-            //     image: existingArticle.image,
-            //     date: existingArticle.date,
-            //     author: existingArticle.author,
-            //     description: existingArticle.description,
-            // })
+                // existingArticle.userId = userId
+                
 
             const updatedArticle = await this.ArticleRepository.save(existingArticle)
 
@@ -93,23 +89,23 @@ export default new class NewsServices {
         }
     }
 
-    // async delete(id: any) : Promise<object | string> {
-    //     try {
+    async delete(id: any) : Promise<object | string> {
+        try {
 
-    //         const checkId = await this.ArticleRepository.findOne({where:  { id }})
-    //         if(!checkId){
-    //             return `there is no id ${id}`
-    //         }
+            const checkId = await this.ArticleRepository.findOne({where:  { id }})
+            if(!checkId){
+                return `there is no id ${id}`
+            }
 
-    //         await this.ArticleRepository.delete(checkId)
+            await this.ArticleRepository.delete(id)
 
-    //         return{
-    //             message: `Artcile has been deleted`
-    //         }
-    //     } catch (error) {
-    //         return{
-    //             message: `Ooops something went error during deleting, please see this ==>> ${error}`
-    //         }
-    //     }
-    // }
+            return{
+                message: `Artcile has been deleted`
+            }
+        } catch (error) {
+            return{
+                message: `Ooops something went error during deleting, please see this ==>> ${error}`
+            }
+        }
+    }
 }
