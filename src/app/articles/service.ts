@@ -47,6 +47,13 @@ export default new class NewsServices {
     async getDetail(id: any) : Promise<object |string> {
         try {
 
+            const checkId = await this.ArticleRepository.findOne({where: {id}})
+            if(!checkId){
+                return{
+                    message: `Article with id: ${id} doesn't exist`
+                }
+            }
+
             const articleDetail = await this.ArticleRepository.createQueryBuilder('article')
             .leftJoinAndSelect('article.users', 'user')
             .select(['article.id', 'article.title', 'article.date', 'article.author', 
