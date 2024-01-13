@@ -93,4 +93,16 @@ export default new class PartyControllers {
         }
     }
 
+    async delete(req: Request, res: Response){
+        try {
+            const id = req.params
+
+            const deleteParty = await PartyServices.delete(id)
+
+            res.status(200).json(deleteParty)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
+
 }
