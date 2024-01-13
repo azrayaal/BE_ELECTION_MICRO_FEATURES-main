@@ -36,11 +36,21 @@ export default new class CandidateControllers {
         try {
             const response = await CandidateServices.getAll()
 
-            // console.log(response)
-
             res.status(200).json(response)
         } catch (error) {
             res.status(200).json({message: error.message})
+        }
+    }
+
+    async getDetail(req: Request, res: Response){
+        try {
+            const id = req.params.id
+
+            const detail = await CandidateServices.getDetail(id)
+
+            res.status(200).json(detail)
+        } catch (error) {
+            res.status(500).json({message: error.message})
         }
     }
 }

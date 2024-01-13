@@ -7,6 +7,7 @@ import AuthMiddleware from '../../middlewares/auth'
 const router = express.Router()
 
 router.post('/candidate', AuthMiddleware.Auth, uploadFile.upload("image"), CandidateControllers.create)
-router.get('/candidate', CandidateControllers.getAll)
+router.get('/candidates', CandidateControllers.getAll)
+router.get('/candidate/:id', CandidateControllers.getDetail)
 
 export default router

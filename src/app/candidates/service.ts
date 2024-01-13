@@ -43,4 +43,24 @@ export default new class CandidateServices {
             }
         }
     }
+
+    async getDetail(id: any): Promise<object | string>{
+        try {
+            // const candidateDetail = await this.CandidateRepository.findOne({where: {id}})
+
+            const candidateDetail = await this.CandidateRepository.createQueryBuilder('candidate')
+            .leftJoinAndSelect('candidate.party', 'party')
+            .select(['candidate.id', 'candidate.name', 'candidate.image', 'candidate.vision_mission',
+            'party.id as partyId', 'party.name as partyName'
+            ])
+            .where('candidate.id = :id', {id})
+            .getOne()
+
+            return candidateDetail
+        } catch (error) {
+            return{
+                message: `Ooops something went error, please see this ==> ${error}`
+            }
+        }
+    }
 }

@@ -46,8 +46,15 @@ export default new class NewsServices {
 
     async getDetail(id: any) : Promise<object |string> {
         try {
-            const detail = await this.ArticleRepository.findOne({ where: { id } })
-            return detail
+
+            const articleDetail = await this.ArticleRepository.createQueryBuilder('article')
+            .leftJoinAndSelect('article.users', 'user')
+            .select(['article.id', 'article.title', 'article.date', 'article.author', 
+            'article.description', 'user.id', 'user.fullName'])
+            .where('article.id = :id', {id})
+            .getOne()
+
+            return articleDetail
         } catch (error) {
             return{
                 message: `Oops something went wrong, please see this ==>> ${error}`
