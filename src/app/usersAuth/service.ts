@@ -142,7 +142,26 @@ export default new class AuthServices{
         }
     }
 
-    // async delte(id: any): Promise<obje
+    async delete(id: any): Promise<object | string>{
+        try {
+            const checkId = await this.AuthRepository.findOne({where: {id}})
+            if(!checkId){
+                return{
+                    message: `User with id: ${id} doesn't exist`
+                }
+            }
+            
+            await this.AuthRepository.delete(id)
+
+            return{
+                message: `User has been removed`
+            }
+        } catch (error) {
+            return{
+                message: `Ooops something went wrong, please see this ==> ${error}`
+            }
+        }
+    }
     
 
 }

@@ -86,4 +86,15 @@ export default new class AuthControllers {
         }
     }
 
+    async delete(req: Request, res: Response){
+        try {
+            const {id} = req.params
+            const deleteUser = await AuthServices.delete(id)
+
+            res.status(200).json(deleteUser)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
+
 }
