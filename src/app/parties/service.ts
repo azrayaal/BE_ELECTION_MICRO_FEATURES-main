@@ -106,4 +106,26 @@ export default new class PartyServices {
             }
         }
     }
+
+    async delete(id: any): Promise<object | string>{
+        try {
+            const checkId = await this.PartyRepository.findOne({where: {id}})
+            if(!checkId){
+                return {
+                    message: `Party with id: ${id} doesn't exist`
+                }
+            }
+            
+            await this.PartyRepository.delete(id)
+
+            return{
+                message: `Party has been deleted`
+
+            }
+        } catch (error) {
+            return{
+                message: `Ooops something went error, please see this ==>> ${error}`
+            }
+        }
+    }
 }
