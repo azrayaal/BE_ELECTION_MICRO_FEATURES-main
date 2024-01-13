@@ -84,4 +84,15 @@ export default new class CandidateControllers {
             res.status(500).json({message: error.message})
         }
     }
+
+    async delete(req: Request, res: Response){
+        try {
+            const {id} = req.params
+            const response = await CandidateServices.deleteData(id)
+
+            res.status(200).json(response)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
 }

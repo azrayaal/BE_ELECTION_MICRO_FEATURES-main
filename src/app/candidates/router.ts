@@ -10,5 +10,6 @@ router.post('/candidate', AuthMiddleware.Auth, uploadFile.upload("image"), Candi
 router.get('/candidates', CandidateControllers.getAll)
 router.get('/candidate/:id', CandidateControllers.getDetail)
 router.put('/candidate/:id', uploadFile.upload("image"), CandidateControllers.update)
+router.delete('/candidate/:id', AuthMiddleware.Auth, CandidateControllers.delete)
 
 export default router

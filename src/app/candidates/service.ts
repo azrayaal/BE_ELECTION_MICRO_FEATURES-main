@@ -95,5 +95,23 @@ export default new class CandidateServices {
         }
     }
 
-    // async deleteData(id: any): Promise<object
+    async deleteData(id: any): Promise<object | string>{
+        try {
+
+            const checkId = await this.CandidateRepository.findOne({where: {id}})
+            if (!checkId){
+                return `Candidate with id: ${id} doesn't exist!`
+            }
+            
+            await this.CandidateRepository.delete(id)
+
+            return {
+                message: `Candidate has been deleted`
+            }
+        } catch (error) {
+            return{
+                message: `Ooops something went wrong, please see this ==>> ${error}`
+            }
+        }
+    }
 }
