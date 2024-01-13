@@ -100,7 +100,7 @@ export default new class NewsServices {
             await this.ArticleRepository.delete(id)
 
             return{
-                message: `Artcile has been deleted`
+                message: `Article has been deleted`
             }
         } catch (error) {
             return{
