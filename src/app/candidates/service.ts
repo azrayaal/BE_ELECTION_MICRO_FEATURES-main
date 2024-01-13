@@ -46,12 +46,11 @@ export default new class CandidateServices {
 
     async getDetail(id: any): Promise<object | string>{
         try {
-            // const candidateDetail = await this.CandidateRepository.findOne({where: {id}})
 
             const candidateDetail = await this.CandidateRepository.createQueryBuilder('candidate')
             .leftJoinAndSelect('candidate.party', 'party')
             .select(['candidate.id', 'candidate.name', 'candidate.image', 'candidate.vision_mission',
-            'party.id as partyId', 'party.name as partyName'
+            'party.id', 'party.name', 'party.vision_mission'
             ])
             .where('candidate.id = :id', {id})
             .getOne()
