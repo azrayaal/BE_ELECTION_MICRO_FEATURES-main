@@ -58,7 +58,7 @@ export default new class NewsServices {
     async update(data: any) : Promise<object | string>{
         try {
 
-            const {id, title, image, date, author, description} = data
+            const {id, title, image, date, author, description, userId} = data
 
             const existingArticle = await this.ArticleRepository.findOne({where: {id}})
 
@@ -73,7 +73,7 @@ export default new class NewsServices {
                 existingArticle.date = date;
                 existingArticle.author = author;
                 existingArticle.description = description;
-                // existingArticle.userId = userId
+                existingArticle.users = userId
                 
 
             const updatedArticle = await this.ArticleRepository.save(existingArticle)
