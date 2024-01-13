@@ -50,6 +50,18 @@ export default new class AuthControllers {
         }
     }
 
+    async getDetail(req: Request, res: Response){
+        try {
+            const {id} = req.params
+
+            const detail = await AuthServices.getDetail(id)
+
+            res.status(200).json(detail)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
+
     async update(req: Request, res: Response){
         try {
             const {id} = req.params

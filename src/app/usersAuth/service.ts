@@ -90,6 +90,25 @@ export default new class AuthServices{
         }
     }
 
+    async getDetail(id: any): Promise<object | string>{
+        try {
+            const data = await this.AuthRepository.createQueryBuilder('user')
+            .leftJoinAndSelect('user.article', 'article')
+            .leftJoinAndSelect('user.vote', 'vote')
+            .select(['user.id', 'user.fullName', 'user.email', 'user.gender', 'user.userName', 
+            'vote.id', 
+            'article.id', 'article.title', 'article.description', 'article.date', 'article.image'])
+            .where('user.id = :id', {id})
+            .getOne()
+
+            return data
+        } catch (error) {
+            return{
+                message: `Ooops something went error, please see this ==>> ${error}`
+            }
+        }
+    }
+
     async update(data: any): Promise<object | string>{
         try {
             const {id, fullName, password, address, gender} = data
@@ -123,6 +142,7 @@ export default new class AuthServices{
         }
     }
 
+    // async delte(id: any): Promise<obje
     
 
 }

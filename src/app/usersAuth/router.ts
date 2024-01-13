@@ -8,6 +8,7 @@ const router = express.Router()
 router.post('/user/register', AuthControllers.register)
 router.post('/user/logIn', AuthControllers.logIn)
 router.get('/users', AuthControllers.getUser)
+router.get('/user/:id', AuthMiddleware.Auth, AuthControllers.getDetail)
 router.put('/user/:id', AuthMiddleware.Auth, AuthControllers.update)
 
 export default router
