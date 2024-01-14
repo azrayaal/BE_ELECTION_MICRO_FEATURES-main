@@ -331,15 +331,16 @@
 
 ## Candidate(paslon) API
 
-### Get all candidate
+### Get all Candidates
 
 `No Authorization`
 
-- URL: http://localhost:4000/api/v1/candidate
+- URL: http://localhost:4000/api/v1/candidates
 - Method: `GET`
 - Request Body:
 
 ```
+[
     {
         "candidate_id": 1,
         "candidate_name": "Mimiko Hasaba",
@@ -359,7 +360,7 @@
 ]
 ```
 
-### Create new candidate
+### Create new Candidate
 
 `Authorization`
 
@@ -378,6 +379,60 @@
 ```
 
 `Make sure to send the partyId using the id from the party to associate the candidate with the correct party`
+
+### Get detail Candidate
+
+`No Authorization`
+
+- URL: http://localhost:4000/api/v1/candidate/:id
+- Method: `GET`
+- Request Body:
+
+```
+   {
+    "id": 1,
+    "name": "AANG",
+    "image": "FIFA LOGO-1704700723367.png",
+    "vision_mission": "MENGHENTIKAN INVASI NEGARA API",
+    "party": {
+        "id": 1,
+        "name": "GETO UHUY",
+        "vision_mission": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a webpage or publication,"
+        }
+    }
+```
+
+### Update Candidate
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/candidate/:id
+- Method: `PUT`
+- Request Body:
+
+```
+   {
+        "name": "PASLON UPDATE",
+        "image": "FIFA LOGO-1704702416331.png",
+        "number": 3,
+        "vision_mission": "MENINJU SEMUA ORG YG ADA",
+        "partyid": 2
+    }
+```
+
+### Delete Candidate
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/candidate/:id
+- Method: `DELETE`
+- Request Body:
+
+```
+   {
+        message: "Candidate has been removed"
+    }
+```
 
 ## Voter API
 
