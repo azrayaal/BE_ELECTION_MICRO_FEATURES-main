@@ -301,17 +301,31 @@
 
 `Authorization`
 
-- URL: http://localhost:4000/api/v1/party
-- Method: `POST`
+- URL: http://localhost:4000/api/v1/party/:id
+- Method: `PUT`
 - Request Body:
 
 ```
 {
-  "name": "ASTA",
+  "name": "Party UPDATE",
   "image": "1704718751443.png",
-  "number": 3,
+  "chairman": "BULALA",
   "vision_mission": "MENGHANCURKAN NEGARA TANAH",
   "address": "KERAJAAN SIHIR"
+}
+```
+
+### Delete Party
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/party/:id
+- Method: `DELETE`
+- Request Body:
+
+```
+{
+  message: "Party has been removed"
 }
 ```
 
