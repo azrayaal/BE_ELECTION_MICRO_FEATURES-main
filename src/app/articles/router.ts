@@ -7,7 +7,7 @@ const router = express.Router()
 
 // router.post('/article',  uploadFile.upload("image"), ArticleControllers.create)
 router.post('/article',  AuthMiddleware.Auth, uploadFile.upload("image"), ArticleControllers.create)
-router.get('/article',  ArticleControllers.find)
+router.get('/articles',  ArticleControllers.find)
 router.get('/article/:id', ArticleControllers.getDetail)
 router.put('/article/:id', AuthMiddleware.Auth, uploadFile.upload("image"), ArticleControllers.update)
 router.delete('/article/:id', AuthMiddleware.Auth, ArticleControllers.delete)

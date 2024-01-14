@@ -1,4 +1,4 @@
-# How To Use Pemilu Backend Using Postman 
+# How To Use Pemilu Backend Using Postman
 
 ## Authorization
 
@@ -6,14 +6,13 @@
 2. Choose Type "Bearer Token" on the left
 3. Insert token on the right
 
-   
 ## User API
 
 ### Register User
 
-* URL: http://localhost:4000/api/v1/user/register
-* Method: `POST`
-* Request Body:
+- URL: http://localhost:4000/api/v1/user/register
+- Method: `POST`
+- Request Body:
 
 ```
 {
@@ -28,27 +27,90 @@
 
 ### Login User
 
-* URL: http://localhost:4000/api/v1/user/login
-* Method: `POST`
-* Request Body:
+- URL: http://localhost:4000/api/v1/user/login
+- Method: `POST`
+- Request Body:
 
 ```
 {
   "email": "admGuest@gmail.com",
-  "password": "rahasia"   
+  "password": "rahasia"
 }
 ```
 
+### Get detail User
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/user/:id
+- Method: `GET`
+- Request Body:
+
+```
+{
+  "id": 2,
+    "fullName": "admGuest",
+    "email": "admGuest@gmail.com",
+    "gender": "laki laki",
+    "userName": "admGuest",
+    "article": [
+        {
+            "id": 16,
+            "title": "ARTIKEL BARU 1",
+            "image": "412520687_829427478869516_382939006133828220_n-1705136482473.png",
+            "date": "2023-07-01T00:00:00.000Z",
+            "description": "Lorem ipsum dolor amet wak waw"
+        }
+    ],
+    "vote": [
+        {
+            "id": 2
+        }
+    ]
+}
+```
+
+### Update User
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/user/:id
+- Method: `PUT`
+- Request Body:
+
+```
+{
+  "fullName": "admUpdate",
+  "password": "rahasia",
+  "address": "gang masjid",
+  "gender": "laki laki"
+}
+```
+
+### Update User
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/user/:id
+- Method: `DELETE`
+- Request Body:
+
+```
+{
+  "message": "User has been removed"
+}
+```
 
 ## Article API
 
-### Get All Article
+### Get All Articles
+
 `No Authorization`
 
-* URL: http://localhost:4000/api/v1/article
-* Method: `GET`
-* Request Body:
-  
+- URL: http://localhost:4000/api/v1/articles
+- Method: `GET`
+- Request Body:
+
 ```
 [
     {
@@ -66,31 +128,87 @@
 ]
 ```
 
-### Create new article
+### Create new Article
+
 `Authorization`
 
-* URL: http://localhost:4000/api/v1/article
-* Method: `POST`
-* Request Body:
+- URL: http://localhost:4000/api/v1/article
+- Method: `POST`
+- Request Body:
 
 ```
 {
   "title": "admGuest@gmail.com",
   "image": "rahasia",
   "date": 2023-07-01,
-  "description": "Lorem ipsum dolor amet wak waw" 
+  "description": "Lorem ipsum dolor amet wak waw"
 }
 ```
-`Author and userId obtained from isLogin trough Authorization` 
+
+`Author and userId obtained from isLogin trough Authorization`
+
+### Get detail Article
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/article/:id
+- Method: `GET`
+- Request Body:
+
+```
+{
+   "id": 16,
+    "title": "ARTIKEL BARU 1",
+    "date": "2023-07-01T00:00:00.000Z",
+    "author": "admGuest",
+    "description": "Lorem ipsum dolor amet wak waw",
+    "users": {
+        "id": 2,
+        "fullName": "admGuest"
+    }
+}
+```
+
+### Update Article
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/article/:id
+- Method: `PUT`
+- Request Body:
+
+```
+{
+    "title": "ARTIKEL UPDATE",
+    "image": "jpg.jpg",
+    "date": "2023-07-01T00:00:00.000Z",
+    "description": "Lorem ipsum dolor amet wak waw",
+}
+```
+
+### Delete Article
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/article/:id
+- Method: `DELETE`
+- Request Body:
+
+```
+{
+    message: "Article has been removed"
+}
+```
 
 ## Party (partai) API
 
-### Get all parties
+### Get all Parties
+
 `No Authorization`
 
-* URL: http://localhost:4000/api/v1/parties
-* Method: `GET`
-* Request Body:
+- URL: http://localhost:4000/api/v1/parties
+- Method: `GET`
+- Request Body:
 
 ```
 [
@@ -130,14 +248,34 @@
     }
 ]
 ```
+
 `Candidate data will be shown after the admin creates a candidate(paslon)`
 
-### Get detail party
+### Create new Party
+
+`Authorization`
+
+- URL: http://localhost:4000/api/v1/party
+- Method: `POST`
+- Request Body:
+
+```
+{
+  "name": "ASTA",
+  "image": "1704718751443.png",
+  "number": 3,
+  "vision_mission": "MENGHANCURKAN NEGARA TANAH",
+  "address": "KERAJAAN SIHIR"
+}
+```
+
+### Get detail Party
+
 `No Authorization`
 
-* URL: http://localhost:4000/api/v1/party/:id
-* Method: `GET`
-* Request Body:
+- URL: http://localhost:4000/api/v1/party/:id
+- Method: `GET`
+- Request Body:
 
 ```
 {
@@ -159,12 +297,13 @@
 }
 ```
 
-### Create new party
+### Update Party
+
 `Authorization`
 
-* URL: http://localhost:4000/api/v1/party
-* Method: `POST`
-* Request Body:
+- URL: http://localhost:4000/api/v1/party
+- Method: `POST`
+- Request Body:
 
 ```
 {
@@ -179,11 +318,12 @@
 ## Candidate(paslon) API
 
 ### Get all candidate
+
 `No Authorization`
 
-* URL: http://localhost:4000/api/v1/candidate
-* Method: `GET`
-* Request Body:
+- URL: http://localhost:4000/api/v1/candidate
+- Method: `GET`
+- Request Body:
 
 ```
     {
@@ -206,11 +346,12 @@
 ```
 
 ### Create new candidate
+
 `Authorization`
 
-* URL: http://localhost:4000/api/v1/candidate
-* Method: `POST`
-* Request Body:
+- URL: http://localhost:4000/api/v1/candidate
+- Method: `POST`
+- Request Body:
 
 ```
    {
@@ -221,16 +362,18 @@
         "partyid": 2
     }
 ```
+
 `Make sure to send the partyId using the id from the party to associate the candidate with the correct party`
 
 ## Voter API
 
 ### Get all voters
+
 `Authorization`
 
-* URL: http://localhost:4000/api/v1/voters
-* Method: `GET`
-* Request Body:
+- URL: http://localhost:4000/api/v1/voters
+- Method: `GET`
+- Request Body:
 
 ```
 [
@@ -254,11 +397,12 @@
 ```
 
 ### Create new voter
+
 `Authorization`
 
-* URL: http://localhost:4000/api/v1/voter
-* Method: `POST`
-* Request Body:
+- URL: http://localhost:4000/api/v1/voter
+- Method: `POST`
+- Request Body:
 
 ```
 [
@@ -272,8 +416,5 @@
     }
 ]
 ```
+
 `The voter data, including voter name, voter address, etc., is retrieved from the user data obtained through user login authorization`
-
-
-
-
