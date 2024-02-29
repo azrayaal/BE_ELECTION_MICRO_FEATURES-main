@@ -1,8 +1,3 @@
-npx typeorm-ts-node-commonjs migration:generate src/migrations/MyMigration -d src/data-source.ts
-
-
-npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts
-
 # How To Use Pemilu Backend Using Postman
 
 ## Authorization
